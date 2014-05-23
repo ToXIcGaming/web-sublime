@@ -3,19 +3,19 @@
 ## Code editor
 - [x] Editor itself
 - [x] Syntax highlighting
-- [] Detect language of opened file, and include JS modes for CodeMirror as required
+- [ ] Detect language of opened file, and include JS modes for CodeMirror as required
 
 ## File-related features
 - [x] Opening files
-- [] Browsing folders
-- [] Saving all open files
-- [] Current file
+- [ ] Browsing folders
+- [ ] Saving all open files
+- [ ] Current file
 - [x] Root directory
 - [x] File whitelist
 
 ## Tabs
-- [] Switch between files
-- [] Drag to re-order
+- [ ] Switch between files
+- [ ] Drag to re-order
 
 ## Login
 - [x] Sessions
