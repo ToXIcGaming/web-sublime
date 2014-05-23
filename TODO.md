@@ -9,7 +9,7 @@
 - [x] Opening files
 - [ ] Browsing folders
 - [ ] Saving all open files
-- [ ] Current file
+- [ ] Saving current file
 - [x] Root directory
 - [x] File whitelist
 
