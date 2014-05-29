@@ -6,6 +6,7 @@
 - [ ] Detect language of opened file, and include JS modes for CodeMirror as required
 
 ## File-related features
+- [ ] Save changes to MySQL cache before closing page, and load it when re-opened
 - [x] Opening files
 - [ ] Browsing folders
 - [ ] Saving all open files
