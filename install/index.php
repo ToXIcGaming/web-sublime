@@ -366,6 +366,13 @@ foreach($messages as $type=>$array)
                 <input type="text" name="db_database" required class="form-control" id="inputDatabase1" placeholder="Database">
               </div>
             </div>
+            
+            <div class="form-group">
+              <div class="input-group col-sm-2 col-sm-offset-2 collapse in">
+                <button type="submit" name="submit" class="btn btn-default">Next</button>
+                <?php if($var['skip']) echo '<button type="submit" name="next" formnovalidate class="btn btn-default">Skip</button>'; ?>
+              </div>
+            </div>
 
             <input type="hidden" name="step" value="1">
 
