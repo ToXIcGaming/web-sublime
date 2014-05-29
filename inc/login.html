@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="shortcut icon" href="../../assets/ico/favicon.ico"><title>Log in</title><link rel="stylesheet" href="/assets/css/bootstrap.min.css"><style>body{padding-top:40px;padding-bottom:40px;background-color:#eee;}.form-signin{max-width:330px;padding:15px;margin:0 auto;}.form-signin .form-signin-heading,.form-signin .checkbox{margin-bottom:10px;}.form-signin .checkbox{font-weight:normal;}.form-signin .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px;}.form-signin .form-control:focus{z-index:2;}.form-signin input[name="username"]{margin-bottom:-1px;border-bottom-right-radius:0;border-bottom-left-radius:0;}.form-signin input[name="password"]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0;}</style><meta name="description" content="This is the page where you log in."><title>Log In</title></head><body>
+<div class="container">
+<form onsubmit="return false;" class="form-signin" role="form">
+<h2 class="form-signin-heading">Please log in</h2>
+<input type="text" name="username" class="form-control" placeholder="Username" required autofocus><input type="password" name="password" class="form-control" placeholder="Password" required><label class="checkbox">
+<input type="checkbox" name="remember_me" value="remember-me"> Remember me
+</label>
+<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+</form>
+</div>  
+<script src="./assets/js/jquery-1.11.1.min.js"></script><script src="./assets/js/bootstrap.min.js"></script><script>
+      $( 'form.form-signin' ).submit( function ( e ) {
+        var userInput = $( 'input[name="username"]' );
+        var passInput = $( 'input[name="password"]' );
+        $.post( "/user.php?action=login", { username: userInput.val(), password: passInput.val() }, function( data ) {
+          if( data.success == true ) {
+            $.get(location.href).done(function (data) {document.open();document.write(data);document.close()});
+          }else{
+            if( $( '.alert.alert-danger' ) )
+            {
+              $( '.alert.alert-danger' ).remove();
+            }
+            passInput.val( '' );
+            var alert = document.createElement( 'div' );
+            if( data.timeout ) {
+              var timeout = new Date( data.timeout * 1000 ),
+              curtime = new Date(),
+              wait = Math.floor(((timeout - curtime) - (Math.floor((timeout - curtime)/3600000) * 3600000)) / 60000);
+              if( wait < 0 ) {wait = 0;}
+              $( '.form-signin-heading' ).before( $( alert ).addClass( 'alert alert-danger' ).html( 'Too many attempts. Wait ' + wait + ' minutes, and attempt to log in again.' ).hide().fadeIn() );
+            }else{
+              $( '.form-signin-heading' ).before( $( alert ).addClass( 'alert alert-danger' ).html( 'Invalid username or password. ' + ( 5 - data.attempts ) + ' attempts remaining.' ).hide().fadeIn() );
+            }
+            
+          }
+        }, 'JSON' );
+      });</script></body></html>
