@@ -7,7 +7,7 @@ require_once ROOT_FOLDER.'inc/init.php'; // Require webide init script
 // Protect the page
 if(!$sessions->is_valid($sessions->get_id()))
 {
-	echo $pages->parse($pages->get('login'));
+	include ROOT_FOLDER.'inc/login.html';
 	exit;
 }
 
